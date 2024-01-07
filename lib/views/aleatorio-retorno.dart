@@ -1,9 +1,12 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 class DetalhesImagem extends StatefulWidget {
   final Map<String, dynamic> imageInfo;
 
-  const DetalhesImagem({super.key, required this.imageInfo});
+  const DetalhesImagem({Key? key, required this.imageInfo}) : super(key: key);
+
   @override
   State<DetalhesImagem> createState() => _DetalhesImagemState();
 }
@@ -11,20 +14,18 @@ class DetalhesImagem extends StatefulWidget {
 class _DetalhesImagemState extends State<DetalhesImagem> {
   @override
   Widget build(BuildContext context) {
-    final Map<String, dynamic> imageInfo =
-        widget.imageInfo; // Adicione esta linha
     return Scaffold(
       appBar: AppBar(
-        title: Text(imageInfo['title']),
+        title: Text(widget.imageInfo['title']),
       ),
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.network(imageInfo['hdurl']),
+            Image.network(widget.imageInfo['hdurl']),
             Padding(
               padding: const EdgeInsets.all(16.0),
               child: Text(
-                imageInfo['explanation'],
+                widget.imageInfo['explanation'],
                 style: const TextStyle(fontSize: 16),
               ),
             ),

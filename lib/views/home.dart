@@ -3,7 +3,7 @@
 import 'dart:async';
 import 'dart:convert';
 import 'package:cosmicvision/views/aleatorio.dart';
-import 'package:cosmicvision/views/alerotio-retorno.dart';
+import 'package:cosmicvision/views/aleatorio-retorno.dart';
 import 'package:cosmicvision/views/autor.dart';
 import 'package:cosmicvision/views/imagem.dart';
 import 'package:cosmicvision/views/periodo.dart';
@@ -110,6 +110,22 @@ class _HomeState extends State<Home> {
         content: Text('Não foi possível abrir o link: $url'),
       );
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
+  }
+
+  void _abrirRetorno() async {
+    // Carregue as informações da imagem antes de navegar para os detalhes
+    final imageInfo = await _buscarImagemAleatoriaDiaria();
+
+    if (imageInfo.isNotEmpty) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => DetalhesImagem(
+            imageInfo: imageInfo,
+          ),
+        ),
+      );
     }
   }
 
@@ -308,22 +324,8 @@ class _HomeState extends State<Home> {
                   mainAxisSize: MainAxisSize.max,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    if (_isloading) ...[
-                      const Center(child: CircularProgressIndicator())
-                    ] else ...[
                       GestureDetector(
-                        onTap: () {
-                          if (_imageInfo.isNotEmpty) {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (context) => DetalhesImagem(
-                                  imageInfo: _imageInfo,
-                                ),
-                              ),
-                            );
-                          }
-                        },
+                        onTap: _abrirRetorno,
                         child: Hero(
                           tag: 'locationImage',
                           transitionOnUserGestures: true,
@@ -684,7 +686,7 @@ class _HomeState extends State<Home> {
                         ],
                       ),
                     ],
-                  ]),
+                  ),
             ),
           ),
         ),
