@@ -19,6 +19,7 @@ class _PesquisarDataState extends State<PesquisarData> {
   Map<String, dynamic>? _response;
   String _selectedDate = '';
   String _title = '';
+  String _date = '';
   String _description = '';
   String _imageUrl = '';
   bool _hasError = false;
@@ -63,6 +64,7 @@ class _PesquisarDataState extends State<PesquisarData> {
         setState(() {
           _hasError = true;
           _title = response['error'];
+          _date = '';
           _description = '';
           _imageUrl = '';
           _response = null; // Limpa o valor da variável
@@ -72,6 +74,7 @@ class _PesquisarDataState extends State<PesquisarData> {
         setState(() {
           _hasError = false;
           _title = response['title'];
+          _date = response['date'];
           _description = response['explanation'];
 
           if (response['media_type'] == 'video') {
@@ -125,7 +128,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.normal,
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -176,6 +179,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                       setState(() {
                         _selectedDate = '';
                         _title = '';
+                        _date = '';
                         _description = '';
                         _imageUrl = '';
                         _hasError = false;
@@ -250,10 +254,11 @@ class _PesquisarDataState extends State<PesquisarData> {
                               onPressed: () {
                                 ImageHelper imageHelper = ImageHelper();
                                 if (_imageUrl.isNotEmpty) {
-                                  imageHelper.downloadMedia(
-                                      context, _imageUrl); // Para imagens
+                                  imageHelper.downloadMedia(context, _imageUrl,
+                                      _date); // Para imagens
                                 } else if (_response != null) {
-                                  imageHelper.downloadMedia(context, _response);
+                                  imageHelper.downloadMedia(
+                                      context, _response, _date);
                                 }
                               },
                               label: Text(

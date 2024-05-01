@@ -4,6 +4,7 @@ import 'package:cosmicvision/imagehelper.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 class DetalhesImagem extends StatefulWidget {
   final Map<String, dynamic> imageInfo;
@@ -17,6 +18,11 @@ class DetalhesImagem extends StatefulWidget {
 class _DetalhesImagemState extends State<DetalhesImagem> {
   @override
   Widget build(BuildContext context) {
+    final data = widget.imageInfo['date'];
+    final dateTime = DateTime.parse(data);
+    DateFormat formatter = DateFormat('dd/MM/yyyy');
+    String date = formatter.format(dateTime);
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 34, 34, 34),
       appBar: AppBar(
@@ -40,7 +46,7 @@ class _DetalhesImagemState extends State<DetalhesImagem> {
             ),
             Image.network(widget.imageInfo['hdurl']),
             Padding(
-              padding: const EdgeInsets.fromLTRB(15, 10, 15, 5),
+              padding: const EdgeInsets.fromLTRB(13, 10, 13, 5),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -58,7 +64,9 @@ class _DetalhesImagemState extends State<DetalhesImagem> {
                       ImageHelper imageHelper = ImageHelper();
                       if (widget.imageInfo['hdurl'] != null) {
                         imageHelper.downloadMedia(
-                            context, widget.imageInfo['hdurl']); // Para imagens
+                            context,
+                            widget.imageInfo['hdurl'],
+                            widget.imageInfo['date']); // Para imagens
                       }
                     },
                     label: Text(
@@ -96,21 +104,33 @@ class _DetalhesImagemState extends State<DetalhesImagem> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(0, 2, 0, 0),
-              child: Text(
-                "Descrição".toUpperCase(),
-                textAlign: TextAlign.center,
-                style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.bold,
-                  fontStyle: FontStyle.normal,
-                  color: const Color.fromARGB(255, 0, 230, 148),
-                  fontSize: 20,
-                ),
+            const SizedBox(
+              height: 5,
+            ),
+            Text(
+              "Descrição".toUpperCase(),
+              textAlign: TextAlign.center,
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                color: const Color.fromARGB(255, 0, 230, 148),
+                fontSize: 23,
+              ),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Text(
+              'Imagem do dia $date',
+              style: GoogleFonts.poppins(
+                fontWeight: FontWeight.bold,
+                fontStyle: FontStyle.normal,
+                color: Colors.white,
+                fontSize: 14,
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: const EdgeInsets.fromLTRB(13, 10, 13, 20),
               child: Text(
                 widget.imageInfo['explanation'],
                 textAlign: TextAlign.justify,

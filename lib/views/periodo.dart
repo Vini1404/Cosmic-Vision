@@ -88,7 +88,7 @@ class _PeriodoDataState extends State<PeriodoData> {
               fontWeight: FontWeight.bold,
               fontStyle: FontStyle.normal,
               color: Colors.white,
-              fontSize: 25,
+              fontSize: 20,
             ),
           ),
         ),
@@ -269,9 +269,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                                       ImageHelper imageHelper = ImageHelper();
                                       if (url.isNotEmpty) {
                                         imageHelper.downloadMedia(
-                                          context,
-                                          url,
-                                        );
+                                            context, url, date);
                                       }
                                     },
                                     label: Text(

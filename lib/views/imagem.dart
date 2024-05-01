@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 import 'package:cosmicvision/imagehelper.dart';
 import 'package:cosmicvision/models/nasa_api_client.dart';
 import 'package:youtube_player_flutter/youtube_player_flutter.dart';
-import 'package:translator/translator.dart';
 
 class ImagemDoDia extends StatefulWidget {
   const ImagemDoDia({Key? key}) : super(key: key);
@@ -19,6 +18,8 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
   late Future<Map<String, dynamic>> imagemDoDia;
   final NasaApiClient nasaApiClient =
       NasaApiClient(apiKey: 'RvMqHjtuK9Cm1X7WZYmtJ0KWskxuGdYw4uzpgqwV');
+  var titulo = '';
+  var desc = '';
 
   dynamic _response;
   late Map<String, dynamic> data;
@@ -30,38 +31,10 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
     data = {};
   }
 
-  Future<String> traduzirTexto(String texto) async {
-    final translator = GoogleTranslator();
-    var traducao = await translator.translate(texto, from: 'en', to: 'pt');
-    return traducao.text;
-  }
-
-  void _traduzirInformacoes() async {
-    // Verifica se 'title' e 'explanation' não são nulos ou ausentes no mapa
-    if (data['title'] != null && data['explanation'] != null) {
-      final tituloTraduzido = await traduzirTexto(data['title']);
-      final explicacaoTraduzida = await traduzirTexto(data['explanation']);
-      if (mounted) {
-        setState(() {
-          data['title'] = tituloTraduzido;
-          data['explanation'] = explicacaoTraduzida;
-        });
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color.fromARGB(255, 34, 34, 34),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color.fromARGB(255, 74, 140, 245),
-        onPressed: _traduzirInformacoes,
-        child: const Icon(
-          Icons.g_translate,
-          color: Colors.white,
-        ),
-      ),
       appBar: AppBar(
         centerTitle: true,
         title: Row(
@@ -75,7 +48,7 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                   fontWeight: FontWeight.bold,
                   fontStyle: FontStyle.normal,
                   color: Colors.white,
-                  fontSize: 23,
+                  fontSize: 20,
                 ),
               ),
             ),
@@ -85,7 +58,7 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal,
                 color: Colors.white,
-                fontSize: 23,
+                fontSize: 20,
               ),
             ),
             Padding(
@@ -120,6 +93,11 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
             final data = snapshot.data!;
             final mediaType = data['media_type'];
             final imageUrl = data['hdurl'];
+            DateTime now = DateTime.now();
+            DateFormat formatter = DateFormat('yyyy-MM-dd');
+            String date = formatter.format(now);
+            final titulo = data['title'];
+            final desc = data['explanation'];
             final videoUrl = data['video_url'];
             return SingleChildScrollView(
               child: Column(
@@ -132,13 +110,13 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                         child: Padding(
                           padding: const EdgeInsets.fromLTRB(8, 20, 8, 10),
                           child: Text(
-                            data['title'],
+                            titulo,
                             textAlign: TextAlign.center,
                             style: GoogleFonts.poppins(
                               fontWeight: FontWeight.bold,
                               fontStyle: FontStyle.normal,
                               color: Colors.white,
-                              fontSize: 25,
+                              fontSize: 22,
                             ),
                           ),
                         ),
@@ -170,9 +148,10 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                             ImageHelper imageHelper = ImageHelper();
                             if (imageUrl.isNotEmpty) {
                               imageHelper.downloadMedia(
-                                  context, imageUrl); // Para imagens
+                                  context, imageUrl, date); // Para imagens
                             } else if (_response != null) {
-                              imageHelper.downloadMedia(context, _response);
+                              imageHelper.downloadMedia(
+                                  context, _response, date);
                             }
                           },
                           label: Text(
@@ -226,7 +205,7 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(10, 5, 10, 10),
                     child: Text(
-                      data['explanation'],
+                      desc,
                       textAlign: TextAlign.justify,
                       style: GoogleFonts.poppins(
                         fontWeight: FontWeight.normal,

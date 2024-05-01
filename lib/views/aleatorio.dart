@@ -239,9 +239,7 @@ class _AleatorioState extends State<Aleatorio> {
                                     ImageHelper imageHelper = ImageHelper();
                                     if (url.isNotEmpty) {
                                       imageHelper.downloadMedia(
-                                        context,
-                                        url,
-                                      );
+                                          context, url, date);
                                     }
                                   },
                                   label: Text(
