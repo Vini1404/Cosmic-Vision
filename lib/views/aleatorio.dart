@@ -117,7 +117,7 @@ class _AleatorioState extends State<Aleatorio> {
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
+                          WidgetStateProperty.all<Color>(Colors.red),
                     ),
                     icon: const FaIcon(
                       FontAwesomeIcons.trash,
@@ -138,7 +138,7 @@ class _AleatorioState extends State<Aleatorio> {
                   ),
                   ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                           const Color(0xFF194B39)),
                     ),
                     icon: const FaIcon(
@@ -227,7 +227,7 @@ class _AleatorioState extends State<Aleatorio> {
                                 child: ElevatedButton.icon(
                                   style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        WidgetStateProperty.all<Color>(
                                       const Color(0xFF194B39),
                                     ),
                                   ),
@@ -256,7 +256,7 @@ class _AleatorioState extends State<Aleatorio> {
                               ElevatedButton.icon(
                                 style: ButtonStyle(
                                   backgroundColor:
-                                      MaterialStateProperty.all<Color>(
+                                      WidgetStateProperty.all<Color>(
                                     const Color(0xFF194B39),
                                   ),
                                 ),

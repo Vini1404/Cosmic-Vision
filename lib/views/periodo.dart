@@ -103,7 +103,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                     padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
                     child: ElevatedButton(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           const Color(0xFF194B39),
                         ),
                       ),
@@ -123,7 +123,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                   ),
                   ElevatedButton(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         const Color(0xFF194B39),
                       ),
                     ),
@@ -148,7 +148,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
+                          WidgetStateProperty.all<Color>(Colors.red),
                     ),
                     icon: const FaIcon(FontAwesomeIcons.trash,
                         color: Colors.white),
@@ -167,7 +167,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                     padding: const EdgeInsets.only(left: 16.0),
                     child: ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                           const Color(0xFF194B39),
                         ),
                       ),
@@ -257,7 +257,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                                   child: ElevatedButton.icon(
                                     style: ButtonStyle(
                                       backgroundColor:
-                                          MaterialStateProperty.all<Color>(
+                                          WidgetStateProperty.all<Color>(
                                         const Color(0xFF194B39),
                                       ),
                                     ),
@@ -287,7 +287,7 @@ class _PeriodoDataState extends State<PeriodoData> {
                                 ElevatedButton.icon(
                                   style: ButtonStyle(
                                     backgroundColor:
-                                        MaterialStateProperty.all<Color>(
+                                        WidgetStateProperty.all<Color>(
                                       const Color(0xFF194B39),
                                     ),
                                   ),

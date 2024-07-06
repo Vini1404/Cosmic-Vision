@@ -137,7 +137,7 @@ class _PesquisarDataState extends State<PesquisarData> {
               child: ElevatedButton(
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all<Color>(const Color(0xFF194B39)),
+                      WidgetStateProperty.all<Color>(const Color(0xFF194B39)),
                 ),
                 onPressed: () => _selectData(),
                 child: Row(
@@ -169,7 +169,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                   ElevatedButton.icon(
                     style: ButtonStyle(
                       backgroundColor:
-                          MaterialStateProperty.all<Color>(Colors.red),
+                          WidgetStateProperty.all<Color>(Colors.red),
                     ),
                     icon: const FaIcon(
                       FontAwesomeIcons.trash,
@@ -199,7 +199,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                     padding: const EdgeInsets.only(left: 16.0),
                     child: ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
+                        backgroundColor: WidgetStateProperty.all<Color>(
                             const Color(0xFF194B39)),
                       ),
                       icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
@@ -243,7 +243,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                             ElevatedButton.icon(
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all<Color>(
+                                    WidgetStateProperty.all<Color>(
                                   const Color(0xFF194B39),
                                 ),
                               ),
@@ -274,7 +274,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                             ElevatedButton.icon(
                               style: ButtonStyle(
                                 backgroundColor:
-                                    MaterialStateProperty.all<Color>(
+                                    WidgetStateProperty.all<Color>(
                                   const Color(0xFF194B39),
                                 ),
                               ),

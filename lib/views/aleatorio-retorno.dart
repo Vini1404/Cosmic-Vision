@@ -52,7 +52,7 @@ class _DetalhesImagemState extends State<DetalhesImagem> {
                 children: [
                   ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         const Color(0xFF194B39),
                       ),
                     ),
@@ -81,7 +81,7 @@ class _DetalhesImagemState extends State<DetalhesImagem> {
                   ),
                   ElevatedButton.icon(
                     style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
+                      backgroundColor: WidgetStateProperty.all<Color>(
                         const Color(0xFF194B39),
                       ),
                     ),

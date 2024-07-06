@@ -136,7 +136,7 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                       children: [
                         ElevatedButton.icon(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
+                            backgroundColor: WidgetStateProperty.all<Color>(
                               const Color(0xFF194B39),
                             ),
                           ),
@@ -166,7 +166,7 @@ class ImagemDoDiaState extends State<ImagemDoDia> {
                         ),
                         ElevatedButton.icon(
                           style: ButtonStyle(
-                            backgroundColor: MaterialStateProperty.all<Color>(
+                            backgroundColor: WidgetStateProperty.all<Color>(
                               const Color(0xFF194B39),
                             ),
                           ),
