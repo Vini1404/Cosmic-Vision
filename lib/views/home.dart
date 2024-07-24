@@ -9,6 +9,7 @@ import 'package:cosmicvision/views/imagem.dart';
 import 'package:cosmicvision/views/periodo.dart';
 import 'package:cosmicvision/views/pesquisar.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -25,21 +26,20 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   Map<String, dynamic> _imageInfo = {}; // Adicionado esta linha
   String _heroImageUrl =
-      'https://cosmicvision.com.br/wp-content/uploads/2024/01/Logotipo-Cosmic-Vision.png'; // Imagem inicial
-
+      'https://cosmicvision.marcuspaixao.com.br/wp-content/uploads/2024/07/Destaque-Sobre.jpg';
   @override
   void initState() {
     super.initState();
-    _atualizarImagemInicial();
+    /*_atualizarImagemInicial();*/
   }
 
   Future<void> _atualizarImagemInicial() async {
-    await Future.delayed(const Duration(milliseconds: 5000));
+    await Future.delayed(const Duration(milliseconds: 8000));
 
     final imageInfo = await _buscarImagemAleatoriaDiaria();
     if (imageInfo.isNotEmpty) {
       setState(() {
-        _heroImageUrl = imageInfo['hdurl'];
+        _heroImageUrl = imageInfo['url'];
         _imageInfo = imageInfo;
       });
     }
@@ -55,13 +55,16 @@ class _HomeState extends State<Home> {
 
       if (data.isNotEmpty) {
         final item = data[0];
+        final mediaType = item['media_type'];
+        final url = item['url'];
+
         return {
           'title': item['title'],
-          'hdurl': item['hdurl'],
+          'hdurl': url,
           'explanation': item['explanation'],
           'date': item['date'],
-          'media_type': item['media_type'],
-          'video_url': item['media_type'] == 'video' ? item['hdurl'] : null,
+          'media_type': mediaType,
+          'video_url': mediaType == 'video' ? url : null,
         };
       }
     }
@@ -321,20 +324,20 @@ class _HomeState extends State<Home> {
                           _heroImageUrl,
                           width: MediaQuery.of(context).size.width * 0.75,
                           height: MediaQuery.of(context).size.height * 0.35,
-                          fit: BoxFit.fitHeight,
+                          fit: BoxFit.fitWidth,
                         ),
                       ),
                     ),
                   ),
                   const SizedBox(height: 10),
-                  Text(
+                  /*Text(
                     'Confira uma imagem astrônomica aleatória',
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
                         color: Colors.white,
                         fontWeight: FontWeight.bold,
                         fontSize: 10),
-                  ),
+                  ),*/
                   Padding(
                     padding: const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                     child: Text(
