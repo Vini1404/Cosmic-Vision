@@ -97,10 +97,11 @@ class _AutorState extends State<Autor> {
                                   child: ClipRRect(
                                     borderRadius: BorderRadius.circular(6),
                                     child: Image.asset(
-                                      'images/marcus.png',
+                                      'images/marcus.jpg',
                                       width: 100,
                                       height: 100,
                                       fit: BoxFit.cover,
+                                      scale: Checkbox.width,
                                     ),
                                   ),
                                 ),

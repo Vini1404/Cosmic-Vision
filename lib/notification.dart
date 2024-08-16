@@ -36,17 +36,24 @@ class NotificationHelper {
         tz.getLocation('America/Sao_Paulo'); // Defina a localização desejada
 
     // Defina os horários desejados
-    const morningTime = Time(9, 0, 0);
-    const afternoonTime = Time(12, 0, 0);
-    const eveningTime = Time(18, 0, 0);
+    const morningTime = Time(10, 0, 0);
+    const eveningTime = Time(20, 0, 0);
 
     // Agendar as notificações diárias
-    await _scheduleNotificationAtTime(flutterLocalNotificationsPlugin, location,
-        platformChannelSpecifics, morningTime, 1, 'Bom Dia!');
-    await _scheduleNotificationAtTime(flutterLocalNotificationsPlugin, location,
-        platformChannelSpecifics, afternoonTime, 2, 'Boa Tarde!');
-    await _scheduleNotificationAtTime(flutterLocalNotificationsPlugin, location,
-        platformChannelSpecifics, eveningTime, 3, 'Boa Noite!');
+    await _scheduleNotificationAtTime(
+        flutterLocalNotificationsPlugin,
+        location,
+        platformChannelSpecifics,
+        morningTime,
+        1,
+        'Bom Dia! Já visualizou a imagem do dia hoje?');
+    await _scheduleNotificationAtTime(
+        flutterLocalNotificationsPlugin,
+        location,
+        platformChannelSpecifics,
+        eveningTime,
+        3,
+        'Boa Noite! Não perca a imagem de hoje!');
   }
 
   static Future<void> _scheduleNotificationAtTime(
@@ -69,12 +76,8 @@ class NotificationHelper {
     );
 
     // Agendar a notificação diária
-    await flutterLocalNotificationsPlugin.zonedSchedule(
-        notificationId,
-        title,
-        'Não se esqueça de visualizar a imagem do dia! 😉🌠',
-        nextNotificationDateTime,
-        platformChannelSpecifics,
+    await flutterLocalNotificationsPlugin.zonedSchedule(notificationId, title,
+        '😉', nextNotificationDateTime, platformChannelSpecifics,
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
         matchDateTimeComponents: DateTimeComponents.time,

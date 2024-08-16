@@ -97,10 +97,11 @@ class _PeriodoDataState extends State<PeriodoData> {
           child: Column(
             children: [
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const SizedBox(height: 80),
                   Padding(
-                    padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
+                    padding: const EdgeInsets.fromLTRB(0, 0, 20, 0),
                     child: ElevatedButton(
                       style: ButtonStyle(
                         backgroundColor: WidgetStateProperty.all<Color>(
@@ -121,22 +122,26 @@ class _PeriodoDataState extends State<PeriodoData> {
                       ),
                     ),
                   ),
-                  ElevatedButton(
-                    style: ButtonStyle(
-                      backgroundColor: WidgetStateProperty.all<Color>(
-                        const Color(0xFF194B39),
+                  const SizedBox(width: 0),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                    child: ElevatedButton(
+                      style: ButtonStyle(
+                        backgroundColor: WidgetStateProperty.all<Color>(
+                          const Color(0xFF194B39),
+                        ),
                       ),
-                    ),
-                    onPressed: () => _selectDate(context, false),
-                    child: Text(
-                      _datafim != null
-                          ? DateFormat('dd/MM/yyyy').format(_datafim!)
-                          : 'DATA FINAL',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.white,
-                        fontSize: 14,
+                      onPressed: () => _selectDate(context, false),
+                      child: Text(
+                        _datafim != null
+                            ? DateFormat('dd/MM/yyyy').format(_datafim!)
+                            : 'DATA FINAL',
+                        style: GoogleFonts.poppins(
+                          fontWeight: FontWeight.bold,
+                          fontStyle: FontStyle.normal,
+                          color: Colors.white,
+                          fontSize: 14,
+                        ),
                       ),
                     ),
                   ),
@@ -145,43 +150,44 @@ class _PeriodoDataState extends State<PeriodoData> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  ElevatedButton.icon(
-                    style: ButtonStyle(
-                      backgroundColor:
-                          WidgetStateProperty.all<Color>(Colors.red),
-                    ),
-                    icon: const FaIcon(FontAwesomeIcons.trash,
-                        color: Colors.white),
-                    onPressed: () => _limpar(),
-                    label: Text(
-                      'Limpar',
-                      style: GoogleFonts.poppins(
-                        fontWeight: FontWeight.bold,
-                        fontStyle: FontStyle.normal,
-                        color: Colors.white,
-                        fontSize: 14,
-                      ),
-                    ),
-                  ),
+                  const SizedBox(height: 20),
                   Padding(
-                    padding: const EdgeInsets.only(left: 16.0),
+                    padding: const EdgeInsets.fromLTRB(10, 0, 20, 0),
                     child: ElevatedButton.icon(
                       style: ButtonStyle(
-                        backgroundColor: WidgetStateProperty.all<Color>(
-                          const Color(0xFF194B39),
-                        ),
+                        backgroundColor:
+                            WidgetStateProperty.all<Color>(Colors.red),
                       ),
-                      icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
+                      icon: const FaIcon(FontAwesomeIcons.trash,
                           color: Colors.white),
-                      onPressed: () => _pesquisarimagemporperiodo(),
+                      onPressed: () => _limpar(),
                       label: Text(
-                        'Pesquisar',
+                        'Limpar',
                         style: GoogleFonts.poppins(
                           fontWeight: FontWeight.bold,
                           fontStyle: FontStyle.normal,
                           color: Colors.white,
                           fontSize: 14,
                         ),
+                      ),
+                    ),
+                  ),
+                  ElevatedButton.icon(
+                    style: ButtonStyle(
+                      backgroundColor: WidgetStateProperty.all<Color>(
+                        const Color(0xFF194B39),
+                      ),
+                    ),
+                    icon: const FaIcon(FontAwesomeIcons.magnifyingGlass,
+                        color: Colors.white),
+                    onPressed: () => _pesquisarimagemporperiodo(),
+                    label: Text(
+                      'Pesquisar',
+                      style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.bold,
+                        fontStyle: FontStyle.normal,
+                        color: Colors.white,
+                        fontSize: 14,
                       ),
                     ),
                   ),

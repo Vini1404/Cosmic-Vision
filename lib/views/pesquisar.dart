@@ -242,8 +242,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                           children: [
                             ElevatedButton.icon(
                               style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(
+                                backgroundColor: WidgetStateProperty.all<Color>(
                                   const Color(0xFF194B39),
                                 ),
                               ),
@@ -273,8 +272,7 @@ class _PesquisarDataState extends State<PesquisarData> {
                             ),
                             ElevatedButton.icon(
                               style: ButtonStyle(
-                                backgroundColor:
-                                    WidgetStateProperty.all<Color>(
+                                backgroundColor: WidgetStateProperty.all<Color>(
                                   const Color(0xFF194B39),
                                 ),
                               ),
